@@ -183,8 +183,8 @@ export class WorkloadStack extends Stack {
       vpc: vpc,
     });
 
-    sg.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.icmpType(8));
-    sg.addIngressRule(ec2.Peer.anyIpv6(), ec2.Port.icmpType(8));
+    sg.addIngressRule(ec2.Peer.ipv4('62.167.165.0/24'), ec2.Port.icmpType(8));
+    // sg.addIngressRule(ec2.Peer.anyIpv6(), ec2.Port.icmpType(8));
 
     new ec2.Instance(this, `WorkloadEC2-${props.env?.region}`, {
       vpc: vpc,

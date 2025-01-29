@@ -40,7 +40,7 @@ fi
 npx cdk deploy CloudWAN "$profile_opt"
 
 # # Deploy rest of the stacks
-npx cdk deploy --all "$profile_opt"
+npx cdk deploy --all --require-approval never
 
 
 # # # Run a script update CloudWAN policy with firewall attachment IDs
@@ -50,4 +50,4 @@ if ! npx ts-node update_policy_file.ts; then
 fi
 
 # # File got generated. Let's continue and add new policy.
-npx cdk deploy CloudWAN "$profile_opt"
+npx cdk deploy CloudWAN --require-approval never "$profile_opt"
